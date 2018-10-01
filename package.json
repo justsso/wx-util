@@ -1,0 +1,29 @@
+{
+  "name": "wx-util",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-generic-session-sequelize": "^2.0.3",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.9.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "xml2js": "^0.4.19"
+  },
+  "author": "xiaoya",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "nodemon": "^1.18.4"
+  }
+}
