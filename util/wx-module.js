@@ -1,6 +1,6 @@
 const {parseString} = require('xml2js');
 const axios = require('axios');
-
+const exec = require('child_process').exec;
 /**
  * 将xml解析为js对象
  * @param xml
@@ -203,6 +203,7 @@ async function addKfAccount(access_token,{kf_account,nickname,password}) {
     }
 }
 
+
 /**
  * 发送客服消息
  * @param access_token
@@ -310,12 +311,105 @@ async function sendKfMessage(access_token, openid, obj) {
 }
 
 
+/**
+ * 创建菜单
+ * @param access_token
+ * @param menuObj
+ * @returns {Promise<*>}
+ */
+async function createMenu(access_token, menuObj){
+//    https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141013
+    var url = `https://api.weixin.qq.com/cgi-bin/menu/create?access_token=${access_token}`;
+    var res = await axios.post(url, menuObj);
+    if(res.data.errcode === 0){
+        return 'create ok';
+    }else {
+        return res.data;
+    }
+}
+
+
+/**
+ * 创建临时素材
+ * @param access_token
+ * @param filePath
+ * @param mediaType
+ * @returns {Promise<*|void>}
+ */
+async function createTempMedia(access_token,filePath, mediaType) {
+    try {
+        return new Promise((resolve, reject) => {
+            exec(`curl -F media=@${filePath} "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${access_token}&type=${mediaType}"`, (er, result) => {
+                er && reject(er);
+                if(result.media_id){
+                    resolve(result)
+                }else {
+                    reject(null);
+                }
+            });
+        })
+
+    } catch (e) {
+        throw (e);
+    }
+}
+
+
+/**
+ * 获取素材列表
+ * @param access_token
+ * @param type
+ * @param offset
+ * @param count， 取值在1到20之间
+ * @returns {Promise<*>}
+ */
+async function getMaterialList( access_token, {type, offset, count}) {
+    try{
+        let url = `https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=${access_token}`;
+        let a = await axios.post(url, {
+            "type": type,
+            "offset": offset,
+            "count": count
+        });
+        return a.data;
+    }catch (e) {
+        throw (e);
+    }
+}
+
+/**
+ * 下载网络图片
+ * @param url
+ * @param downloadPath
+ * @returns {Promise<any>}
+ */
+var downloadImg = function (url, downloadPath) {
+    try {
+        return new Promise((resolve, reject) => {
+            let stream = request(url).pipe(fs.createWriteStream(downloadPath));
+            stream.on('finish', function () {
+                resolve('download ok');
+            });
+            stream.on('error', function (err) {
+                reject(err);
+            })
+        })
+    }catch (e) {
+        throw (e);
+    }
+};
+
+
 module.exports = {
     parseXML,
     replyMessage,
     getOneUserInfoFromWx,
     createArgumentQrCode,
     addKfAccount,
-    sendKfMessage
+    sendKfMessage,
+    createMenu,
+    createTempMedia,
+    getMaterialList,
+    downloadImg
 };
 
