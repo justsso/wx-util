@@ -348,7 +348,6 @@ async function createTempMedia(access_token,filePath, mediaType) {
                 }
             });
         })
-
     } catch (e) {
         throw (e);
     }
