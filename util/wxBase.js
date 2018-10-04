@@ -353,7 +353,6 @@ async function createTempMedia(access_token,filePath, mediaType) {
     }
 }
 
-
 /**
  * 获取素材列表
  * @param access_token
