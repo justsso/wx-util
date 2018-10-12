@@ -397,6 +397,16 @@ var downloadImg = function (url, downloadPath) {
     }
 };
 
+var sendTempMesg = async function(access_token, postData){
+  try {
+
+      let back =  axios.post(`https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${access_token}`, postData)
+      return back.data;
+  }  catch (e) {
+        throw (e);
+  }
+};
+
 
 module.exports = {
     parseXML,
@@ -408,6 +418,7 @@ module.exports = {
     createMenu,
     createTempMedia,
     getMaterialList,
-    downloadImg
+    downloadImg,
+    sendTempMesg
 };
 
