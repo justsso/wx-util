@@ -152,6 +152,8 @@ async function getOneUserInfoFromWx(access_token,openid) {
  * @param openid
  * @returns {Promise<string>}
  */
+
+//这里信息不全，临时二维码还有时间的属性
 async function createArgumentQrCode(access_token,openid) {
     try {
         var res = await axios.post(`https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=${access_token}`, {
@@ -166,7 +168,7 @@ async function createArgumentQrCode(access_token,openid) {
             let {ticket} = res.data;
             if(ticket){
                 let url = `https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${ ticket}`;
-                console.log(url ,'获取 临时二维码..')
+                console.log(url ,'获取 临时二维码..');
                 return url;
             }else {
                 let url = `https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${ ticket}`;
@@ -397,13 +399,19 @@ var downloadImg = function (url, downloadPath) {
     }
 };
 
+/**
+ *
+ * @param access_token
+ * @param postData
+ * @returns {Promise<*>}
+ */
 var sendTempMesg = async function(access_token, postData){
   try {
 
       let back =  axios.post(`https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=${access_token}`, postData)
       return back.data;
-  }  catch (e) {
-        throw (e);
+  } catch (e) {
+      throw (e);
   }
 };
 
