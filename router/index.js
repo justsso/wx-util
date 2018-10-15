@@ -1,16 +1,11 @@
 const Router = require('koa-router');
-
-
+let apiRouter = require('./api');
 
 let router = new Router();
 
-router.get('/aa', async  (ctx,next) => {
-    ctx.body = '123';
-    next()
-});
+router.use('/api', apiRouter.routes());
 
 router.post('/wx', async (ctx, next) => {
-
     let postData = "";
     postData = await parsePostData(ctx);
 
