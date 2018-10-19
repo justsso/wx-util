@@ -415,7 +415,7 @@ var sendTempMesg = async function(access_token, postData){
   }
 };
 
-
+//增加其他和微信相关的接口，并整理一份接口文档
 module.exports = {
     parseXML,
     replyMessage,
