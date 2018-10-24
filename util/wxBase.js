@@ -376,6 +376,14 @@ async function getMaterialList( access_token, {type, offset, count}) {
         throw (e);
     }
 }
+// 创建永久素材
+async function uploadMaterial() {
+    try {
+        let url = `https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=${access_token}`;
+    }catch (e) {
+        throw (e)
+    }
+}
 
 /**
  * 下载网络图片
