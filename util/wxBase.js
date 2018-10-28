@@ -384,7 +384,6 @@ async function uploadMaterial() {
         throw (e)
     }
 }
-
 /**
  * 下载网络图片
  * @param url
