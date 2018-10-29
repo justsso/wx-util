@@ -7,8 +7,7 @@ router.use('/api', apiRouter.routes());
 
 router.post('/wx', async (ctx, next) => {
     let postData = "";
-    postData = await parsePostData(ctx);
-
+    postData = await parsePostData(ctx);\
     ctx.body = postData;
 });
 
