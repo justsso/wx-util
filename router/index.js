@@ -1,6 +1,5 @@
 const Router = require('koa-router');
 let apiRouter = require('./api');
-
 let router = new Router();
 
 router.use('/api', apiRouter.routes());
