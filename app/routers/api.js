@@ -1,13 +1,13 @@
-const {appId, appSerect, domain} = require('../../config');
+// const {appId, appSerect, domain} = require('../../config');
 const Router = require('koa-router');
 let router = new Router();
 const axios = require('axios');
-const {
-    getRanId,
-    generateKey,
-    ascLine,
-    getSha1
-} = require('../utils/security');
+// const {
+//     getRanId,
+//     generateKey,
+//     ascLine,
+//     getSha1
+// } = require('../utils/security');
 
 //微信公众号 网页登陆
 router.get('/login', async (ctx, next) => {

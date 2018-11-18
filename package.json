@@ -24,6 +24,6 @@
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.18.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.6"
   }
 }
