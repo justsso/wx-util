@@ -1,17 +1,14 @@
-console.log(123);
-console.log(__dirname);
-console.log(__filename);
-console.info(456);
-console.error();
-console.warn(888);
-console.time(2);
-// process.on('exit', function (code) {
-//    setTimeout(function () {
-//       console.log('该代码不会执行')
-//    },0);
-//     console.log('退出码为', code);
-// });
-// console.log("程序执行结束");
+let a = 'Hello World!';
 
-process.stdout.write('标准输出流');
-console.log(process.cwd());
+function first() {
+    console.log('Inside first function');
+    second();
+    console.log('Again inside first function');
+}
+
+function second() {
+    console.log('Inside second function');
+}
+
+first();
+console.log('Inside Global Execution Context');

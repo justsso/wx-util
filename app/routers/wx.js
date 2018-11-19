@@ -1,5 +1,7 @@
 const Router = require('koa-router');
 const wxConfig = require('../../config/config.default').wxConfig;
+const parsePostData = require('../../util/lib').parsePostData;
+const parseXML = require('../../util/lib').parseXML;
 let router = new Router();
 
 //公众号都请求这个接口
@@ -7,26 +9,11 @@ router.post('/', async (ctx, next) => {
     let postData = "";
     postData = await parsePostData(ctx);
     console.log(postData,9);
-    ctx.body = postData;
+    let obj =  await parseXML(postData);
+    ctx.body = obj;
+    //处理业务需求
 });
 
-// 解析上下文里 node 原生请求的 POST 参数
-function parsePostData(ctx) {
-    return new Promise((resovle, reject) => {
-        try {
-            let postData = "";
-            //  ctx.req 是原生 HTTP 请求对象
-            ctx.req.on("data", (data) => {
-                postData += data;
-            });
-            ctx.req.on("end", () => {
-                resovle(postData);
-            })
-        } catch (err) {
-            reject(err);
-        }
-    });
-}
 //  服务器 /wx 用于配置微信公众号的服务器
 router.get('/',async (ctx,next)=> {
     if (ctx.query) {

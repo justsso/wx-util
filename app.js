@@ -49,6 +49,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 // getAccessToken().then(data => {
 //     global.accessTokens = data;
+//     console.log(global.accessTokens)
 // });
 // setInterval(() => {
 //     getAccessToken().then(data => {
