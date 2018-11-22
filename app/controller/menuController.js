@@ -49,7 +49,6 @@ class menuController {
         let res = await axios.post(addConditionalMenu + access_token, menuData);
         return res.data
     }
-
     //自定义菜单推送，与微信服务器发来的xml数据有关系
 
     static async tryMatch(access_token, openid){
