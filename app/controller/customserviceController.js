@@ -5,10 +5,7 @@ let getkflist_url = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist?a
 let addkf_url = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=';
 let updatekf_url = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=';
 let delkf_url = 'https://api.weixin.qq.com/customservice/kfaccount/del?access_token=';
-
-
 let sendmsg_url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=';
-
 
 class customserviceController {
     static async getkflist(access_token) {
@@ -43,7 +40,7 @@ class customserviceController {
     static async delkf(access_token, kfData) {
         let res = await axios.post(delkf_url + access_token, {
             ...kfData
-        })
+        });
         return res.data
     }
 

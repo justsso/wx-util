@@ -21,14 +21,25 @@ function parsePostData(ctx) {
 function parseXML(xml) {
     try {
         return new Promise((resolve, reject) => {
-            parseString(xml,  (err, result) => {
+            parseString(xml, (err, result) => {
                 err && reject(err);
                 resolve(result);
             })
         })
-    }catch (e) {
+    } catch (e) {
         throw (e);
     }
 }
+
+function getAccessToken(name) {
+    for (let i = 0; i < global.accessTokens.length; i++) {
+        let item = global.accessTokens[i];
+        if (item.name === name) {
+            return item.accessToken;
+        }
+    }
+}
+
 module.exports.parsePostData = parsePostData;
 module.exports.parseXML = parseXML;
+module.exports.getAccessToken = getAccessToken;

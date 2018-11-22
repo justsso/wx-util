@@ -47,16 +47,16 @@ app.use(view(path.join(__dirname, viewsPath), {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-// getAccessToken().then(data => {
-//     global.accessTokens = data;
-//     console.log(global.accessTokens)
-// });
-// setInterval(() => {
-//     getAccessToken().then(data => {
-//         global.accessTokens = data;
-//     });
-// }, 1.5 * 60 * 60 * 1000);
+getAccessToken().then(data => {
+    global.accessTokens = data;
+    console.log(global.accessTokens, 'app.js')
+});
+setInterval(() => {
+    getAccessToken().then(data => {
+        global.accessTokens = data;
+    });
+}, 1.5 * 60 * 60 * 1000);
 
 
-app.listen(3000)
+app.listen(3000);
 console.log(`项目启动 at port 3000`);
