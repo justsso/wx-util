@@ -33,7 +33,10 @@
  7. 测试个性化菜单中某用户的匹配结果 `tryMatch`
 
 - `/app/controller/customserviceController`
- 1.  
+ 1. 添加客服 `addkf`
+ 2. 修改客服 `updatekf`
+ 3. 删除客服 `delkf`
+ 4. 发送消息 `sendKfMessage`
 
 
 客服消息与xml消息的区别是，客服消息一次可以回复多条，xml一次只能回复一条
