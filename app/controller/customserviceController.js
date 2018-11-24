@@ -13,7 +13,7 @@ class customserviceController {
         return res.data;
     }
 
-    /**
+    /** 添加客服
      *
      * @param access_token
      * @param kfData  {
@@ -29,6 +29,7 @@ class customserviceController {
         });
         return res.data;
     }
+    //修改客服账号
 
     static async updatekf(access_token, kfData) {
         let res = await axios.post(updatekf_url + access_token, {
@@ -37,6 +38,7 @@ class customserviceController {
         return res.data;
     }
 
+    // 删除客服账号
     static async delkf(access_token, kfData) {
         let res = await axios.post(delkf_url + access_token, {
             ...kfData
@@ -147,4 +149,8 @@ class customserviceController {
 
     }
 
+
+    // 输入状态
+    // 获取所有库夫
+    // 设置客服头像
 }
