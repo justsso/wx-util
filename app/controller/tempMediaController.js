@@ -48,5 +48,8 @@ class tempMediaController {
             throw (e);
         }
     }
+    static async ger(){
+
+    }
 
 }
