@@ -37,6 +37,9 @@
  2. 修改客服 `updatekf`
  3. 删除客服 `delkf`
  4. 发送消息 `sendKfMessage`
+ 5. 返回客服输入状态 `stateInput`
+ 6. 获取客服列表 `getkflist`
+ 7. 设置客服头像 `uploadImg`
 
 
 客服消息与xml消息的区别是，客服消息一次可以回复多条，xml一次只能回复一条

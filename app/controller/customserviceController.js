@@ -1,13 +1,18 @@
 // 客服管理
 const axios = require('axios');
 
-let getkflist_url = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token=';
+let getkflist_url = 'https://api.weixin.qq.com/cgi-bin/customservice/getkflist?access_token='; // 客服列表
 let addkf_url = 'https://api.weixin.qq.com/customservice/kfaccount/add?access_token=';
 let updatekf_url = 'https://api.weixin.qq.com/customservice/kfaccount/update?access_token=';
 let delkf_url = 'https://api.weixin.qq.com/customservice/kfaccount/del?access_token=';
 let sendmsg_url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=';
 
+let uploadImg_url = 'http://api.weixin.qq.com/customservice/kfaccount/uploadheadimg?access_token=';
+
+let zhuangtai_url = 'https://api.weixin.qq.com/cgi-bin/message/custom/typing?access_token=';
+
 class customserviceController {
+    // 获取客服列表
     static async getkflist(access_token) {
         let res = await axios.get(getkflist_url + access_token);
         return res.data;
@@ -146,11 +151,21 @@ class customserviceController {
         } catch (e) {
             throw (e)
         }
-
     }
 
 
-    // 输入状态
-    // 获取所有库夫
     // 设置客服头像
+    //
+    static async uploadImg(access_token, kf_account, p) {
+        let res = await axios.post(uploadImg_url+access_token+ '&kf_account='+kf_account);
+
+        return res.data;
+
+    }
+
+    // 返回客服 输入状态
+    static async stateInput(access_token) {
+        let res = await axios.post(zhuangtai_url+ access_token);
+        return res.data
+    }
 }
