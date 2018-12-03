@@ -1,6 +1,9 @@
 //临时素材 保存在微信后台3天
 const axios = require('axios');
 let upload_url = 'https://api.weixin.qq.com/cgi-bin/media/upload?access_token=';
+let get_media_url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token=';
+
+let material_count ='https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=';
 
 class tempMediaController {
     /**
@@ -27,6 +30,17 @@ class tempMediaController {
         }
     }
 
+    //获取临时素材
+    static async getTempMaterial(access_token, media_id) {
+        try {
+            let url =  `${get_media_url}${access_token}&media_id=${media_id}`;
+            let res = await axios.get(url);
+            return res.data
+        }catch (e) {
+
+        }
+    }
+
     /**
      * 获取素材列表
      * @param access_token
@@ -46,6 +60,17 @@ class tempMediaController {
             return a.data;
         } catch (e) {
             throw (e);
+        }
+    }
+
+    // 获取素材总数
+    static async getmaterial_count(access_token){
+        try{
+            let url = `${material_count}${access_token}`;
+            let res = await axios.get(url);
+            return res.data;
+        }catch (e) {
+
         }
     }
     static async ger(){
