@@ -40,6 +40,9 @@
  5. 返回客服输入状态 `stateInput`
  6. 获取客服列表 `getkflist`
  7. 设置客服头像 `uploadImg`
+ 
+- `/app/controller/tempMediaController`
+ 1. 新增素材
 
 
 客服消息与xml消息的区别是，客服消息一次可以回复多条，xml一次只能回复一条
